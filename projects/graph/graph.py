@@ -60,11 +60,16 @@ class Graph:
             raise IndexError(f'{v1} and {v2} not found!')
 
     def bft(self, starting_vertex):
-        """
-        Print each vertex in breadth-first order
-        beginning from starting_vertex.
-        """
-        pass  # TODO
+        Q = Queue()
+        visited = set()
+        Q.enqueue(starting_vertex)
+        while Q.size() > 0:
+            V = Q.dequeue()
+            if V not in visited:
+                print(V)
+                visited.add(V)
+                for neighbor in self.vertices[V]:
+                    Q.enqueue(neighbor)
 
     def dft(self, starting_vertex):
         """
