@@ -72,11 +72,16 @@ class Graph:
                     Q.enqueue(neighbor)
 
     def dft(self, starting_vertex):
-        """
-        Print each vertex in depth-first order
-        beginning from starting_vertex.
-        """
-        pass  # TODO
+        S = Stack()
+        visited = set()
+        S.push(starting_vertex)
+        while S.size() > 0:
+            V = S.pop()
+            if V not in visited:
+                print(V)
+                visited.add(V)
+                for neighbor in self.vertices[V]:
+                    S.push(neighbor)
 
     def dft_recursive(self, starting_vertex):
         """
