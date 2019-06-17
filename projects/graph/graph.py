@@ -53,6 +53,12 @@ class Graph:
         else:
             raise IndexError(f'{from_vertex} and {to_vertex} not found!')
 
+    def add_directed(self, v1, v2):
+        if v1 in self.vertices and v2 in self.vertices:
+            self.vertices[v1].add(v2)
+        else:
+            raise IndexError(f'{v1} and {v2} not found!')
+
     def bft(self, starting_vertex):
         """
         Print each vertex in breadth-first order
