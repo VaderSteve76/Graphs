@@ -92,7 +92,7 @@ class Graph:
                 self.dft_recursive(neighbor, visited)
         return visited
 
-    def bfs(self, starting_vertex, search_vortex):
+    def bfs(self, starting_vertex, search_vertex):
         Q = Queue()
         visited = set()
         Q.enqueue([starting_vertex])
@@ -101,20 +101,27 @@ class Graph:
             V = path[-1]
             if V not in visited:
                 visited.add(V)
-                if V == search_vortex:
+                if V == search_vertex:
                     return path
                 for neighbor in self.vertices[V]:
                     new_path = list(path)
                     new_path.append(neighbor)
                     Q.enqueue(new_path)
 
-    def dfs(self, starting_vertex, destination_vertex):
-        """
-        Return a list containing a path from
-        starting_vertex to destination_vertex in
-        depth-first order.
-        """
-        pass  # TODO
+    def dfs(self, starting_vertex, search_vertex):
+        S = Stack()
+        visited = set()
+        S.push(starting_vertex)
+        while S.size() > 0:
+            V = S.pop()
+            if V == search_vertex:
+                print(V)
+                break
+            if V not in visited:
+                print(V)
+                visited.add(V)
+                for neighbor in self.vertices[V]:
+                    S.push(neighbor)
 
 
 if __name__ == '__main__':
