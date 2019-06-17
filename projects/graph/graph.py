@@ -44,16 +44,14 @@ class Graph:
         self.vertices = {}
 
     def add_vertex(self, vertex):
-        """
-        Add a vertex to the graph.
-        """
-        pass  # TODO
+        self.vertices[vertex] = set()
 
-    def add_edge(self, v1, v2):
-        """
-        Add a directed edge to the graph.
-        """
-        pass  # TODO
+    def add_edge(self, from_vertex, to_vertex):
+        if from_vertex in self.vertices and to_vertex in self.vertices:
+            self.vertices[from_vertex].add(to_vertex)
+            self.vertices[to_vertex].add(from_vertex)
+        else:
+            raise IndexError(f'{from_vertex} and {to_vertex} not found!')
 
     def bft(self, starting_vertex):
         """
