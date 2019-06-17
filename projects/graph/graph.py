@@ -92,13 +92,21 @@ class Graph:
                 self.dft_recursive(neighbor, visited)
         return visited
 
-    def bfs(self, starting_vertex, destination_vertex):
-        """
-        Return a list containing the shortest path from
-        starting_vertex to destination_vertex in
-        breath-first order.
-        """
-        pass  # TODO
+    def bfs(self, starting_vertex, search_vortex):
+        Q = Queue()
+        visited = set()
+        Q.enqueue([starting_vertex])
+        while Q.size() > 0:
+            path = Q.dequeue()
+            V = path[-1]
+            if V not in visited:
+                visited.add(V)
+                if V == search_vortex:
+                    return path
+                for neighbor in self.vertices[V]:
+                    new_path = list(path)
+                    new_path.append(neighbor)
+                    Q.enqueue(new_path)
 
     def dfs(self, starting_vertex, destination_vertex):
         """
